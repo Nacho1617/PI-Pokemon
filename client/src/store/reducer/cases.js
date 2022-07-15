@@ -1,3 +1,5 @@
+export const IS_LOADING = "IS_LOADING"
+
 export const GET_ALL_POKEMONS = "GET_ALL_POKEMONS"
 
 export const GET_ALL_TYPES = "GET_ALL_TYPES"

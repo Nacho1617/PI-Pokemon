@@ -9,7 +9,7 @@ export default function Filter() {
     return (
             <div>
                 <button type='submit' onClick={() => dispatch(orderByAZ())}>
-                    Order By Name
+                   Swap Order ⇅
                 </button>
             </div>
     )

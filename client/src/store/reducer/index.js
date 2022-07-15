@@ -1,7 +1,7 @@
 import {
     CLEAN_POKEMON_DETAILS,
     // FILTER_BY_TYPE,
-    GET_ALL_POKEMONS, GET_ALL_TYPES, GET_POKEMON_DETAILS, ORDER_BY_AZ, SEARCH_POKEMON
+    GET_ALL_POKEMONS, GET_ALL_TYPES, GET_POKEMON_DETAILS, IS_LOADING, ORDER_BY_AZ, SEARCH_POKEMON
 } from "./cases"
 
 const initialState = {
@@ -9,11 +9,17 @@ const initialState = {
     filteredPokemons: [],
     types: [],
     pokemonDetails: {},
+    loading: true
 }
 
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
+        case IS_LOADING:
+            return {
+                ...state,
+                loading: action.payload
+            }
         case GET_ALL_POKEMONS:
             return {
                 ...state,

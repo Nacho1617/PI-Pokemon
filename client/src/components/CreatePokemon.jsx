@@ -17,10 +17,20 @@ export default function CreatePokemon() {
     })
 
     const types = useSelector(state => state.types)
-    console.log(types)
 
 
     function handleOnChange(e) {
+        if (e.target.name === "types" && e.target.value !== "inicio") {
+            let check = input.types.find(t => t === e.target.value)
+            if (!check) {
+                return setInput({
+                    ...input,
+                    types: [...input.types, e.target.value]
+                })
+                
+            }
+            return
+        }
         setInput({
             ...input,
             [e.target.name]: e.target.value
@@ -28,10 +38,26 @@ export default function CreatePokemon() {
     }
 
     function handleSubmit(e) {
+      e.preventDefault()
+      for (const key in input) {
+        if (input[key] === "") {
+          input[key] = null
+        }
+      }
         axios.post("http://localhost:3001/api/pokemons", input)
         .then(() => {
         })
     }
+
+    function handleDelete(e, p) {
+      e.preventDefault()
+      setInput({
+        ...input,
+        types: input.types.filter(t => t !== p)
+      })
+    }
+
+    console.log(input)
 
     return (
         <div>
@@ -119,13 +145,21 @@ export default function CreatePokemon() {
             <select 
               name='types'
               id='types'
+              onChange={(e) => handleOnChange(e)}
             >
+                <option value="inicio">select...</option>
                 {types.map(t => {
-                    return <option value={t} key={t.id}>
+                    return <option value={t.id} key={t.id}>
                         {t.name}
                     </option>
                 })}
             </select>
+            {input.types.map((d, i) => (
+              <ul key={i}>
+                <li>{d}</li>
+                <button onClick={(e) => handleDelete(e, d)}>x</button>
+              </ul>
+            ))}
             <button
               type='submit'
               disabled={

@@ -20,6 +20,12 @@ export default function CardPokemonDetails() {
 
     const pokemon = useSelector(state => state.pokemonDetails)
 
+    const loading = useSelector(state => state.loading)
+
+    if (loading) {
+        return <h1>Loading...</h1>
+    }
+
     return (
             <div>
                 <h1>{pokemon.name}</h1>

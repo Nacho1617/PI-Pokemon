@@ -60,7 +60,7 @@ router.get("/", async (req, res, next) => {
             })
 
             if (searchPokemon) { 
-                res.send(searchPokemon)
+                res.send([searchPokemon])
             } else {
                 res.send(`No se encontro un pokemon con el nombre: ${name}`)
             }
