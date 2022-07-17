@@ -29,10 +29,10 @@ router.get("/", async (req, res, next) => {
             })
         }
         
-        const apiResult1 = await axios("https://pokeapi.co/api/v2/pokemon")
-        const apiResult2 = await axios("https://pokeapi.co/api/v2/pokemon?offset=20&limit=20")
         
-        const apiTotalResult = [...apiResult1.data.results, ...apiResult2.data.results]
+        const apiTotal = await axios("https://pokeapi.co/api/v2/pokemon?offset=0&limit=40")
+
+        const apiTotalResult = apiTotal.data.results
 
         const allApiPokemons = []
         

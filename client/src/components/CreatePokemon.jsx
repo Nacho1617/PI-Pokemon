@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
-import axios from "axios"
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { cleanPokemonCreated, createPokemon } from '../store/actions';
 
 
 export default function CreatePokemon() {
+
+  let dispatch = useDispatch()
+
+  useEffect(() => {
+    return () => {
+      dispatch(cleanPokemonCreated())
+    }
+  }, [dispatch])
 
     const [input, setInput] = useState({
         name: "",
@@ -17,6 +27,10 @@ export default function CreatePokemon() {
     })
 
     const types = useSelector(state => state.types)
+
+    const loading = useSelector(state => state.loading)
+
+    const pokemon = useSelector(state => state.pokemonCreated)
 
 
     function handleOnChange(e) {
@@ -44,9 +58,7 @@ export default function CreatePokemon() {
           input[key] = null
         }
       }
-        axios.post("http://localhost:3001/api/pokemons", input)
-        .then(() => {
-        })
+      dispatch(createPokemon(input))
     }
 
     function handleDelete(e, p) {
@@ -58,6 +70,16 @@ export default function CreatePokemon() {
     }
 
     console.log(input)
+
+    if (loading) {
+      return <h1>Loading...</h1>
+    }
+
+    if (pokemon.name) {
+      return <div>
+      <h1>{`El pokemon ${pokemon.name} ha sido creado`}</h1>
+      </div>
+    }
 
     return (
         <div>

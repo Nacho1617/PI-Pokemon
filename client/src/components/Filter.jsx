@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { orderByAZ } from '../store/actions';
+import { swapOrder } from '../store/actions';
 
 export default function Filter() {
 
@@ -8,7 +8,7 @@ export default function Filter() {
 
     return (
             <div>
-                <button type='submit' onClick={() => dispatch(orderByAZ())}>
+                <button type='button' onClick={() => dispatch(swapOrder())}>
                    Swap Order ⇅
                 </button>
             </div>

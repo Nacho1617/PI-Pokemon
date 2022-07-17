@@ -7,7 +7,7 @@ import Home from "./components/Home";
 import CardPokeDetails from "./components/CardPokeDetails"
 import CreatePokemon from "./components/CreatePokemon"
 import { useDispatch } from 'react-redux';
-import { getAllTypes, getAllPokemons } from './store/actions/index';
+import { getAllTypes } from './store/actions/index';
 
 
 
@@ -16,11 +16,6 @@ function App() {
   let dispatch = useDispatch()
 
    
-  useEffect(() => {
-    dispatch(getAllPokemons())
-}, [dispatch])
-  
-
   useEffect(() => {
     dispatch(getAllTypes())
 }, [dispatch])

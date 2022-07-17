@@ -1,13 +1,15 @@
 import {
+    CLEAN_POKEMON_CREATED,
     CLEAN_POKEMON_DETAILS,
-    // FILTER_BY_TYPE,
-    GET_ALL_POKEMONS, GET_ALL_TYPES, GET_POKEMON_DETAILS, IS_LOADING, ORDER_BY_AZ, SEARCH_POKEMON
+    CREATE_POKEMON,
+    GET_ALL_POKEMONS, GET_ALL_TYPES, GET_POKEMON_DETAILS, IS_LOADING, SEARCH_POKEMON, SWAP_ORDER
 } from "./cases"
 
 const initialState = {
     pokemons: [],
     filteredPokemons: [],
     types: [],
+    pokemonCreated: {},
     pokemonDetails: {},
     loading: true
 }
@@ -35,24 +37,31 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 pokemonDetails: action.payload
             }
+        case CLEAN_POKEMON_CREATED:
+            return {
+                ...state,
+                pokemonCreated: action.payload
+            }
         case SEARCH_POKEMON:
             return {
                 ...state,
                 pokemons: action.payload
             }
-        // case FILTER_BY_TYPE:
-        //     return {
-        //         ...state
-        //     }
+        case CREATE_POKEMON:
+            return {
+                ...state,
+                pokemonCreated: action.payload
+            }
         case GET_ALL_TYPES:
             return {
                 ...state,
                 types: action.payload
             }
-        case ORDER_BY_AZ:
+        case SWAP_ORDER:
+            let swapedPokemons = state.pokemons.reverse()
             return {
                 ...state,
-                okemons: state.pokemons.reverse()
+                pokemons: swapedPokemons
             }
         default:
             return state

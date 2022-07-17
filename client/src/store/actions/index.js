@@ -1,7 +1,9 @@
 import { 
+    CLEAN_POKEMON_CREATED,
     CLEAN_POKEMON_DETAILS,
+    CREATE_POKEMON,
     FILTER_BY_TYPE,
-    GET_ALL_POKEMONS, GET_ALL_TYPES, GET_POKEMON_DETAILS, IS_LOADING, ORDER_BY_AZ, SEARCH_POKEMON,
+    GET_ALL_POKEMONS, GET_ALL_TYPES, GET_POKEMON_DETAILS, IS_LOADING, SEARCH_POKEMON, SWAP_ORDER,
 } from "../reducer/cases"
 import axios from "axios"
 
@@ -11,6 +13,7 @@ export function isLoading(loading) {
         payload: loading
     }
 }
+
 
 export function getAllPokemons() {
     return function(dispatch) {
@@ -53,6 +56,28 @@ export function cleanPokemonDetails() {
     }
 }
 
+export function cleanPokemonCreated() {
+    return {
+        type: CLEAN_POKEMON_CREATED,
+        payload: {}
+    }
+}
+
+export function createPokemon(data) {
+    return function(dispatch) {
+        dispatch(isLoading(true))
+        axios.post("http://localhost:3001/api/pokemons", data)
+        .then(pokemon => {
+            dispatch({
+                type: CREATE_POKEMON,
+                payload: pokemon.data
+            })
+            dispatch(isLoading(false))
+        }).catch(error => {
+            console.log(error)
+        })
+    }
+}
 
 export function searchPokemon(name) {
     return function(dispatch) {
@@ -91,9 +116,9 @@ export function getAllTypes() {
     }
 }
 
-
-export function orderByAZ() {
+export function swapOrder() {
     return {
-        type: ORDER_BY_AZ
+        type: SWAP_ORDER
     }
+    
 }

@@ -1,18 +1,20 @@
-import React from 'react';
-// import { useEffect } from 'react';
+import React,{ useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Cards from './Cards';
 import Filter from './Filter';
 import SearchBar from './SearchBar';
 import Paginate from './Paginate';
 import { getAllPokemons } from '../store/actions/index';
-import { useState } from 'react';
 
 
 export default function Home() {
     
     let dispatch = useDispatch()
-
+    
+    useEffect(() => {
+        dispatch(getAllPokemons())
+    },[dispatch])
+    
     const pokemons = useSelector(state => state.pokemons)
     const loading = useSelector(state => state.loading)
     
@@ -46,7 +48,7 @@ export default function Home() {
                 </div> : <div>
                     <Paginate pokemonsPerPage={pokemonsPerPage} allPokemons={pokemons.length} paginate={paginate}/>
                 <button onClick={(e)=> handleOnButton(e)}>All Pokemons</button>
-                    {currentPokemons.map(poke => {
+                    {currentPokemons && currentPokemons.map(poke => {
                         return <div key={poke.id}>
                 <Cards name={poke.name} image={poke.image} types={poke.types} id={poke.id}/>
                 </div>})}
