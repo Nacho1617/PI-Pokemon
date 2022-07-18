@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import { cleanPokemonCreated, createPokemon } from '../store/actions';
 
 
@@ -178,7 +177,7 @@ export default function CreatePokemon() {
             </select>
             {input.types.map((d, i) => (
               <ul key={i}>
-                <li>{d}</li>
+                <p>{d}</p>
                 <button onClick={(e) => handleDelete(e, d)}>x</button>
               </ul>
             ))}

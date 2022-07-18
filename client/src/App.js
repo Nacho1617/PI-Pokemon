@@ -15,11 +15,9 @@ function App() {
 
   let dispatch = useDispatch()
 
-   
   useEffect(() => {
     dispatch(getAllTypes())
-}, [dispatch])
-
+  },[dispatch])
 
 
   return (

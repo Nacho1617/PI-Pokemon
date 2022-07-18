@@ -4,7 +4,7 @@ import Cards from './Cards';
 import Filter from './Filter';
 import SearchBar from './SearchBar';
 import Paginate from './Paginate';
-import { getAllPokemons } from '../store/actions/index';
+import { getAllPokemons, showAllPokemon } from '../store/actions/index';
 
 
 export default function Home() {
@@ -14,9 +14,9 @@ export default function Home() {
     useEffect(() => {
         dispatch(getAllPokemons())
     },[dispatch])
-    
-    const pokemons = useSelector(state => state.pokemons)
+     
     const loading = useSelector(state => state.loading)
+    const pokemons = useSelector(state => state.pokemons)
     
     const [currentPage, setCurrentPage] = useState(1)
     const [pokemonsPerPage] = useState(12)
@@ -29,7 +29,7 @@ export default function Home() {
 
     function handleOnButton(e) {
         e.preventDefault()
-        dispatch(getAllPokemons())
+        dispatch(showAllPokemon())
         setCurrentPage(1)
     }
 
@@ -37,10 +37,10 @@ export default function Home() {
     if (loading) {
         return <h1>Loading...</h1>
     }
-
+    
     return <div>
         <SearchBar />
-        <Filter />
+        <Filter setCurrentPage={setCurrentPage}/>
         {typeof pokemons === "string" ? 
                 <div>
                 <button onClick={(e)=> handleOnButton(e)}>All Pokemons</button>

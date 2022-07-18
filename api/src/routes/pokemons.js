@@ -25,6 +25,7 @@ router.get("/", async (req, res, next) => {
                 id: dbResult[i].id,
                 image: dbResult[i].image,
                 name: dbResult[i].name,
+                attack: dbResult[i].attack,
                 types: types
             })
         }
@@ -46,6 +47,7 @@ router.get("/", async (req, res, next) => {
                 id: pokemon.data.id,
                 image: pokemon.data.sprites.other["official-artwork"].front_default,
                 name: pokemon.data.name,
+                attack: pokemon.data.stats[1].base_stat,
                 types: types
             })
         }

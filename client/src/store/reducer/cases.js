@@ -17,3 +17,9 @@ export const SEARCH_POKEMON = "SEARCH_POKEMON"
 export const FILTER_BY_TYPE = "FILTER_BY_TYPE"
 
 export const SWAP_ORDER = "SWAP_ORDER"
+
+export const ORDER_BY_NAME = "ORDER_BY_NAME"
+
+export const ORDER_BY_ATTACK = "ORDER_BY_ATTACK"
+
+export const SHOW_ALL_POKEMON = "SHOW_ALL_POKEMON"

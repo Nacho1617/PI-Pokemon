@@ -3,7 +3,7 @@ import {
     CLEAN_POKEMON_DETAILS,
     CREATE_POKEMON,
     FILTER_BY_TYPE,
-    GET_ALL_POKEMONS, GET_ALL_TYPES, GET_POKEMON_DETAILS, IS_LOADING, SEARCH_POKEMON, SWAP_ORDER,
+    GET_ALL_POKEMONS, GET_ALL_TYPES, GET_POKEMON_DETAILS, IS_LOADING, ORDER_BY_ATTACK, ORDER_BY_NAME, SEARCH_POKEMON, SHOW_ALL_POKEMON, SWAP_ORDER,
 } from "../reducer/cases"
 import axios from "axios"
 
@@ -26,8 +26,8 @@ export function getAllPokemons() {
             })
             dispatch(isLoading(false))
         }).catch(error => {
-            console.log(error)
             dispatch(isLoading(false))
+            console.log(error)
         })
     }
 }
@@ -43,8 +43,8 @@ export function getPokemonDetails(id) {
             })
             dispatch(isLoading(false))
         }).catch(error => {
-            console.log(error)
             dispatch(isLoading(false))
+            console.log(error)
         })
     }
 }
@@ -74,6 +74,7 @@ export function createPokemon(data) {
             })
             dispatch(isLoading(false))
         }).catch(error => {
+            dispatch(isLoading(false))
             console.log(error)
         })
     }
@@ -90,15 +91,21 @@ export function searchPokemon(name) {
             })
             dispatch(isLoading(false))
         }).catch(error => {
+            dispatch(isLoading(false))
             console.log(error)
         })
     }
 }
 
 export function filterByType(type) {
-    return {
-        type: FILTER_BY_TYPE,
-        payload: type
+    console.log("se llamo a la accion filterByType")
+    return function(dispatch) {
+        dispatch(isLoading(true))
+        dispatch({
+            type: FILTER_BY_TYPE,
+            payload: type
+        })
+        dispatch(isLoading(false))
     }
 }
 
@@ -117,8 +124,42 @@ export function getAllTypes() {
 }
 
 export function swapOrder() {
-    return {
-        type: SWAP_ORDER
+    return function(dispatch) {
+        dispatch(isLoading(true))
+        dispatch({
+            type: SWAP_ORDER
+        })
+        dispatch(isLoading(false))
     }
     
+}
+
+export function orderByName() {
+    return function(dispatch) {
+        dispatch(isLoading(true))
+        dispatch({
+            type: ORDER_BY_NAME
+        })
+        dispatch(isLoading(false))
+    }
+}
+
+export function orderByAttack() {
+    return function(dispatch) {
+        dispatch(isLoading(true))
+        dispatch({
+            type: ORDER_BY_ATTACK
+        })
+        dispatch(isLoading(false))
+    }
+}
+
+export function showAllPokemon() {
+    return function(dispatch) {
+        dispatch(isLoading(true))
+        dispatch({
+            type: SHOW_ALL_POKEMON
+        })
+        dispatch(isLoading(false))
+    }
 }
