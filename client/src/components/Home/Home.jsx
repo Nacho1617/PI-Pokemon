@@ -38,14 +38,15 @@ export default function Home() {
         return <h1>Loading...</h1>
     }
     
+
     return <div>
-        <SearchBar />
-        <Filter setCurrentPage={setCurrentPage}/>
         {typeof pokemons === "string" ? 
                 <div>
-                <button onClick={(e)=> handleOnButton(e)}>All Pokemons</button>
+                <button onClick={(e)=> handleOnButton(e)}>Back to All Pokemons</button>
                 <h1>{pokemons}</h1> 
                 </div> : <div>
+                    <SearchBar />
+                    <Filter setCurrentPage={setCurrentPage}/>
                     <Paginate pokemonsPerPage={pokemonsPerPage} allPokemons={pokemons.length} paginate={paginate}/>
                 <button onClick={(e)=> handleOnButton(e)}>All Pokemons</button>
                     {currentPokemons && currentPokemons.map(poke => {

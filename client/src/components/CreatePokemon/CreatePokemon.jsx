@@ -214,6 +214,7 @@ export default function CreatePokemon() {
             <button
               type='submit'
               disabled={
+                input.types.length < 0 ||
                 input.name === "" ||
                 error.name !== "" ||
                 error.attack !== "" ||

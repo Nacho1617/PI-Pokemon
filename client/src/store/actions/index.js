@@ -98,7 +98,6 @@ export function searchPokemon(name) {
 }
 
 export function filterByType(type) {
-    console.log("se llamo a la accion filterByType")
     return function(dispatch) {
         dispatch(isLoading(true))
         dispatch({

@@ -110,7 +110,6 @@ export default function reducer(state = initialState, action) {
                 pokemons: sortedPokemonsAttack
             }
         case FILTER_BY_TYPE:
-            console.log("entro en el reducer de filterByType con type " + action.payload)
             let filterPokemon = state.allPokemons.filter(p => p.types.includes(action.payload))
             if (filterPokemon.length === 0) {
                 filterPokemon = `No ${action.payload} type pokemon found`

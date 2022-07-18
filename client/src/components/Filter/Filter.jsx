@@ -30,7 +30,6 @@ export default function Filter({setCurrentPage}) {
         e.preventDefault()
         if (e.target.value !== "inicio") {
             dispatch(filterByType(e.target.value))
-            console.log("se clickeo en filter" + e.target.value)
         }
     }
 
