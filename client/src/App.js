@@ -1,13 +1,13 @@
 import './App.css';
 import React, { useEffect } from 'react';
-import Navbar from "./components/NavBar";
+import Navbar from "./components/NavBar/NavBar";
 import { Route, Switch } from "react-router-dom";
-import Landing from "./components/Landing";
-import Home from "./components/Home";
-import CardPokeDetails from "./components/CardPokeDetails"
-import CreatePokemon from "./components/CreatePokemon"
+import Landing from "./components/Landing/Landing";
+import Home from "./components/Home/Home";
+import CardPokeDetails from "./components/CardPokeDetails/CardPokeDetails"
+import CreatePokemon from "./components/CreatePokemon/CreatePokemon"
 import { useDispatch } from 'react-redux';
-import { getAllTypes } from './store/actions/index';
+import { getAllTypes, getAllPokemons } from './store/actions/index';
 
 
 
@@ -18,6 +18,10 @@ function App() {
   useEffect(() => {
     dispatch(getAllTypes())
   },[dispatch])
+
+  useEffect(() => {
+    dispatch(getAllPokemons())
+},[dispatch])
 
 
   return (

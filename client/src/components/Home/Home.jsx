@@ -1,10 +1,10 @@
 import React,{ useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Cards from './Cards';
-import Filter from './Filter';
-import SearchBar from './SearchBar';
-import Paginate from './Paginate';
-import { getAllPokemons, showAllPokemon } from '../store/actions/index';
+import Cards from '../Cards/Cards';
+import Filter from '../Filter/Filter';
+import SearchBar from '../SearchBar/SearchBar';
+import Paginate from '../Paginate/Paginate';
+import { getAllPokemons, showAllPokemon } from '../../store/actions/index';
 
 
 export default function Home() {
@@ -52,6 +52,8 @@ export default function Home() {
                         return <div key={poke.id}>
                 <Cards name={poke.name} image={poke.image} types={poke.types} id={poke.id}/>
                 </div>})}
+                <Paginate pokemonsPerPage={pokemonsPerPage} allPokemons={pokemons.length} paginate={paginate}/>
+                <button onClick={(e)=> handleOnButton(e)}>All Pokemons</button>
                 </div>}
     </div>
 }

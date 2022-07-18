@@ -67,7 +67,6 @@ export default function reducer(state = initialState, action) {
         case CREATE_POKEMON:
             return {
                 ...state,
-                allPokemons: [...state.allPokemons, {...action.payload}],
                 pokemonCreated: action.payload,
                 pokemonDb: [...state.pokemonDb, {...action.payload}]
             }

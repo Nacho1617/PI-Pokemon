@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { cleanPokemonCreated, createPokemon } from '../store/actions';
+import { cleanPokemonCreated, createPokemon } from '../../store/actions';
+import validate from "./validations"
 
 
 export default function CreatePokemon() {
@@ -13,6 +14,17 @@ export default function CreatePokemon() {
       dispatch(cleanPokemonCreated())
     }
   }, [dispatch])
+
+    const [error, setError] = useState({
+        name: "",
+        health: "",
+        attack: "",
+        defense: "",
+        speed: "",
+        weight: "",
+        height: "",
+        types: ""
+    })
 
     const [input, setInput] = useState({
         name: "",
@@ -33,25 +45,32 @@ export default function CreatePokemon() {
 
 
     function handleOnChange(e) {
-        if (e.target.name === "types" && e.target.value !== "inicio") {
-            let check = input.types.find(t => t === e.target.value)
-            if (!check) {
-                return setInput({
+      if (e.target.value !== "inicio") {
+        
+        if (e.target.name === "types") {
+          let check = input.types.find(t => t === e.target.value)
+          if (!check) {
+            return setInput({
                     ...input,
                     types: [...input.types, e.target.value]
-                })
-                
-            }
-            return
-        }
-        setInput({
+                  })  
+                }
+                return
+              }
+              setInput({
             ...input,
             [e.target.name]: e.target.value
-        })
-    }
-
-    function handleSubmit(e) {
-      e.preventDefault()
+          })
+          
+          setError(validate({
+            ...input,
+            [e.target.name]: e.target.value
+          }))
+        }
+      }
+        
+        function handleSubmit(e) {
+          e.preventDefault()
       for (const key in input) {
         if (input[key] === "") {
           input[key] = null
@@ -85,7 +104,7 @@ export default function CreatePokemon() {
             <h1>Create a Pokemon!</h1>
            <form onSubmit={(e) => handleSubmit(e)}>
             <article>
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">Name: </label>
             <input
               type='text'
               id='name'
@@ -95,9 +114,10 @@ export default function CreatePokemon() {
               onChange={(e) => {
                 handleOnChange(e);
              }}/>
+             {error.name && (<p>{error.name}</p>)}
             </article>
             <article>
-            <label htmlFor="health">Health</label>
+            <label htmlFor="health">Health: </label>
             <input
               type='number'
               id='health'
@@ -106,9 +126,10 @@ export default function CreatePokemon() {
               onChange={(e) => {
                 handleOnChange(e);
               }}/>
+             {error.health && (<p>{error.health}</p>)}
             </article>
             <article>
-            <label htmlFor="attack">Attack</label>
+            <label htmlFor="attack">Attack: </label>
             <input
               type='number'
               id='attack'
@@ -117,9 +138,10 @@ export default function CreatePokemon() {
               onChange={(e) => {
                 handleOnChange(e);
               }}/>
+             {error.attack && (<p>{error.attack}</p>)}
             </article>
             <article>
-            <label htmlFor="deffense">Deffense</label>
+            <label htmlFor="deffense">Deffense: </label>
             <input
               type='number'
               id='defense'
@@ -128,9 +150,10 @@ export default function CreatePokemon() {
               onChange={(e) => {
                 handleOnChange(e);
               }}/>
+             {error.defense && (<p>{error.defense}</p>)}
             </article>
             <article>
-            <label htmlFor="speed">Speed</label>
+            <label htmlFor="speed">Speed: </label>
             <input
               type='number'
               id='speed'
@@ -139,9 +162,10 @@ export default function CreatePokemon() {
               onChange={(e) => {
                 handleOnChange(e);
               }}/>
+             {error.speed && (<p>{error.speed}</p>)}
             </article>
             <article>
-            <label htmlFor="height">Height</label>
+            <label htmlFor="height">Height: </label>
             <input
               type='number'
               id='height'
@@ -150,9 +174,10 @@ export default function CreatePokemon() {
               onChange={(e) => {
                 handleOnChange(e);
               }}/>
+             {error.height && (<p>{error.height}</p>)}
             </article>
             <article>
-            <label htmlFor="weight">Weight</label>
+            <label htmlFor="weight">Weight: </label>
             <input
               type='number'
               id='weight'
@@ -161,8 +186,10 @@ export default function CreatePokemon() {
               onChange={(e) => {
                 handleOnChange(e);
               }}/>
+             {error.weight && (<p>{error.weight}</p>)}
             </article>
-            <label htmlFor='types'>Types</label>
+            <article>
+            <label htmlFor='types'>Types: </label>
             <select 
               name='types'
               id='types'
@@ -181,14 +208,24 @@ export default function CreatePokemon() {
                 <button onClick={(e) => handleDelete(e, d)}>x</button>
               </ul>
             ))}
+             {error.types && (<p>{error.types}</p>)}
+            </article>
+            <article>
             <button
               type='submit'
               disabled={
-                input.name === ""
+                input.name === "" ||
+                error.name !== "" ||
+                error.attack !== "" ||
+                error.defense !== "" ||
+                error.speed !== "" ||
+                error.height !== "" ||
+                error.weight !== ""
               }
             >
               Create Pokemon
             </button>
+            </article>
            </form>
         </div>
     )

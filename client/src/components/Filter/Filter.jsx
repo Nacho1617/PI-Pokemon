@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterByType, orderByAttack, orderByName, swapOrder } from '../store/actions';
+import { filterByType, orderByAttack, orderByName, swapOrder } from '../../store/actions/index';
 
 export default function Filter({setCurrentPage}) {
 

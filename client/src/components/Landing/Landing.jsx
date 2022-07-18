@@ -7,7 +7,7 @@ export default function Landing() {
     return (
             <div>
                 <h1>PI-Pokemon</h1>
-                <NavLink exact to="/home">Enter</NavLink>
+                <NavLink exact to="/home"><h2>Enter</h2></NavLink>
             </div>
     )
 }

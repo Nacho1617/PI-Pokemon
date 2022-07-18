@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { searchPokemon } from '../store/actions';
+import { searchPokemon } from '../../store/actions';
 
 
 export default function SearchBar() {

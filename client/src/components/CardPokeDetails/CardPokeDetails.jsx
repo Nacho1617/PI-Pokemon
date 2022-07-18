@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getPokemonDetails, cleanPokemonDetails} from '../store/actions';
+import { getPokemonDetails, cleanPokemonDetails} from '../../store/actions';
 
 
 export default function CardPokemonDetails() {
