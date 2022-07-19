@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getPokemonDetails, cleanPokemonDetails} from '../../store/actions';
+import "./CardPokeDetails.css"
 
 
 export default function CardPokemonDetails() {
@@ -27,9 +28,11 @@ export default function CardPokemonDetails() {
     }
 
     return (
-            <div>
+            <div className='pokeDetailsBack'>
                 <h1>{pokemon.name}</h1>
-                <img src={pokemon.image} alt={`imagen de pokemon`}/>
+                <div className='pokeDetailsContain'>
+                <img className='pokeDetailsImage' src={pokemon.image} alt={`imagen de pokemon`}/>
+                <div className='pokeDetailsStats'>
                 <h4>ORDER: {pokemon.order}</h4>
                 <h4>HEATLH: {pokemon.health}</h4>
                 <h4>ATTACK: {pokemon.attack}</h4>
@@ -39,6 +42,8 @@ export default function CardPokemonDetails() {
                 <h4>WEIGHT: {pokemon.weight}</h4>
                 <h4>TYPE: {pokemon.types ? pokemon.types.join(", ")
                  : <p>loading types...</p>} </h4>    
+                 </div>
+                </div>
             </div>
     )
 }

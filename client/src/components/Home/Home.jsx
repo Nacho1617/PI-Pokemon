@@ -5,6 +5,7 @@ import Filter from '../Filter/Filter';
 import SearchBar from '../SearchBar/SearchBar';
 import Paginate from '../Paginate/Paginate';
 import { getAllPokemons, showAllPokemon } from '../../store/actions/index';
+import "./Home.css"
 
 
 export default function Home() {
@@ -39,20 +40,22 @@ export default function Home() {
     }
     
 
-    return <div>
+    return <div className='homeBack'>
         {typeof pokemons === "string" ? 
                 <div>
                 <button onClick={(e)=> handleOnButton(e)}>Back to All Pokemons</button>
                 <h1>{pokemons}</h1> 
-                </div> : <div>
+                </div> : <div className='homeBack'>
                     <SearchBar />
                     <Filter setCurrentPage={setCurrentPage}/>
                     <Paginate pokemonsPerPage={pokemonsPerPage} allPokemons={pokemons.length} paginate={paginate}/>
                 <button onClick={(e)=> handleOnButton(e)}>All Pokemons</button>
+                <div className='pokeCards'>
                     {currentPokemons && currentPokemons.map(poke => {
                         return <div key={poke.id}>
                 <Cards name={poke.name} image={poke.image} types={poke.types} id={poke.id}/>
                 </div>})}
+                </div>
                 <Paginate pokemonsPerPage={pokemonsPerPage} allPokemons={pokemons.length} paginate={paginate}/>
                 <button onClick={(e)=> handleOnButton(e)}>All Pokemons</button>
                 </div>}

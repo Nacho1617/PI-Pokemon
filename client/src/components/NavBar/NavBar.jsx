@@ -1,11 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import "./NavBar.css"
 
 
 export default function NavBar() {
 
     return (
-            <div>
+            <div className='navBody'>
                 <div>
                     <h1>PI Pokemon - Ignacio Balderrama</h1>
                 </div>

@@ -1,0 +1,11 @@
+.cardImage{
+    width: 70%
+}
+
+.cardBack{
+    width: 300px;
+    margin: 5px;
+    border: 7px solid;
+    border-radius: 20px;
+    background-color: white;
+}
