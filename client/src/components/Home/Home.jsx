@@ -38,6 +38,9 @@ export default function Home() {
     if (loading) {
         return <h1>Loading...</h1>
     }
+
+    console.log(pokemonsPerPage)
+    console.log(pokemons)
     
 
     return <div>

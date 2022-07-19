@@ -56,6 +56,10 @@ export default function validate(value, repeat) {
     }
     else errors.height = 'Height is required.'
 
+    if(/^(ftp|http|https):\/\/[^ "]+$/.test(value.image)){
+        errors.image = '';
+    }else errors.image = 'Must have a valid link image.'
+
 
     return errors;
 }

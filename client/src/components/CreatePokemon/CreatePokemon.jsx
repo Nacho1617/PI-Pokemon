@@ -23,6 +23,7 @@ export default function CreatePokemon() {
         speed: "",
         weight: "",
         height: "",
+        image: "",
         types: ""
     })
 
@@ -34,6 +35,7 @@ export default function CreatePokemon() {
         speed: null,
         weight: null,
         height: null,
+        image: "",
         types: []
     })
 
@@ -187,6 +189,18 @@ export default function CreatePokemon() {
                 handleOnChange(e);
               }}/>
              {error.weight && (<p>{error.weight}</p>)}
+            </article>
+            <article>
+            <label htmlFor="image">Image link: </label>
+            <input
+              type='text'
+              id='image'
+              placeholder='Insert your pokemon image link'
+              name='image'
+              onChange={(e) => {
+                handleOnChange(e);
+              }}/>
+             {error.image && (<p>{error.image}</p>)}
             </article>
             <article>
             <label htmlFor='types'>Types: </label>

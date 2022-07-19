@@ -31,6 +31,7 @@ export default function Filter({setCurrentPage}) {
         if (e.target.value !== "inicio") {
             dispatch(filterByType(e.target.value))
         }
+        setCurrentPage(1)
     }
 
 
