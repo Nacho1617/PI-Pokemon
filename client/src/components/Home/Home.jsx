@@ -40,11 +40,11 @@ export default function Home() {
     }
     
 
-    return <div className='homeBack'>
+    return <div>
         {typeof pokemons === "string" ? 
                 <div>
                 <button onClick={(e)=> handleOnButton(e)}>Back to All Pokemons</button>
-                <h1>{pokemons}</h1> 
+                <h1>{pokemons}</h1>
                 </div> : <div className='homeBack'>
                     <SearchBar />
                     <Filter setCurrentPage={setCurrentPage}/>
