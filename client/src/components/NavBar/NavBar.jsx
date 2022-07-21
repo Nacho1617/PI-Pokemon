@@ -10,9 +10,9 @@ export default function NavBar() {
                 <div>
                     <h1>PI Pokemon - Ignacio Balderrama</h1>
                 </div>
-                <div>
-                    <h3><NavLink exact to="/home">Home</NavLink></h3>
-                    <h3><NavLink exact to="/createPokemon">Create a Pokemon</NavLink></h3>
+                <div className='navBtn'>
+                    <button><NavLink exact to="/home">Home</NavLink></button>
+                    <button><NavLink exact to="/createPokemon">Create a Pokemon</NavLink></button>
                 </div>
                 <hr></hr>
             </div>

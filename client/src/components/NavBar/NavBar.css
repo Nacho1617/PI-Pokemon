@@ -1,3 +1,23 @@
 .navBody{
     background-color: orangered;
 }
+
+.navBtn button{
+    border-color: black;
+    border: solid 4px;
+    width: 10%;
+    border-radius: 100px;
+    background-color: white;
+    transition: background-color 0.25s, color 0.25s;
+    padding: 4px;
+    cursor: pointer;
+    color: black
+}
+
+.navBtn button:hover{
+    background-color: orangered;
+    color: white;
+    border: white;
+     border: solid 4px;
+    border-radius: 100px;
+}

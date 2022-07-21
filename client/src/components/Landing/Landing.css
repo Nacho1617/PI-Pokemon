@@ -4,3 +4,24 @@ width: 100%;
 background-size: cover;
 background-image: url("../../assets/PokeBack.jpg")}
 
+.landingBtn{
+    border-color: black;
+    border: solid 4px;
+    width: 20%;
+    border-radius: 100px;
+    background-color: white;
+    transition: background-color 0.25s, color 0.25s;
+    padding: 4px;
+    cursor: pointer;
+    color: orangered
+}
+
+.landingBtn:hover{
+    background-color: orangered;
+    color: white;
+    border: white;
+     border: solid 4px;
+    border-radius: 100px;
+}
+
+

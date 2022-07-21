@@ -36,7 +36,6 @@ export default function CardPokemonDetails() {
                 <div className='pokeDetailsContain'>
                 <img className='pokeDetailsImage' src={pokemon.image} alt={`imagen de pokemon`}/>
                 <div className='pokeDetailsStats'>
-                <h4>ORDER: {pokemon.order}</h4>
                 <h4>HEATLH: {pokemon.health}</h4>
                 <h4>ATTACK: {pokemon.attack}</h4>
                 <h4>DEFENSE: {pokemon.defense}</h4>
