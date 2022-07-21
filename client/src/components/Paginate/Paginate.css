@@ -1,0 +1,17 @@
+.btnPag {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    margin-bottom: 1px;
+  }
+  
+  .btnPag button {
+    background-color: orangered;
+    border-radius: 100%;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .btnPag button:hover {
+    color: black
+  }

@@ -16,6 +16,8 @@ export const SEARCH_POKEMON = "SEARCH_POKEMON"
 
 export const FILTER_BY_TYPE = "FILTER_BY_TYPE"
 
+export const FILTER_BY_ORIGIN = "FILTER_BY_ORIGIN"
+
 export const SWAP_ORDER = "SWAP_ORDER"
 
 export const ORDER_BY_NAME = "ORDER_BY_NAME"

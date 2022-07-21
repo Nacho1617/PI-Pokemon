@@ -1,4 +1,5 @@
 import React from "react";
+import "./Paginate.css"
 
 
 export default function Paginate({ pokemonsPerPage, allPokemons, paginate }) {
@@ -10,7 +11,7 @@ export default function Paginate({ pokemonsPerPage, allPokemons, paginate }) {
   }
 
   return (
-    <nav>
+    <nav className="btnPag">
       {pageNumbers.length > 1 &&
         pageNumbers.map((number) => (
           <button key={number} onClick={() => paginate(number)}>

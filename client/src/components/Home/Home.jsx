@@ -38,21 +38,18 @@ export default function Home() {
     if (loading) {
         return <h1>Loading...</h1>
     }
-
-    console.log(pokemonsPerPage)
-    console.log(pokemons)
     
 
     return <div>
         {typeof pokemons === "string" ? 
                 <div>
-                <button onClick={(e)=> handleOnButton(e)}>Back to All Pokemons</button>
+                <button className='homeBtn' onClick={(e)=> handleOnButton(e)}>Back to All Pokemons</button>
                 <h1>{pokemons}</h1>
                 </div> : <div className='homeBack'>
                     <SearchBar />
                     <Filter setCurrentPage={setCurrentPage}/>
                     <Paginate pokemonsPerPage={pokemonsPerPage} allPokemons={pokemons.length} paginate={paginate}/>
-                <button onClick={(e)=> handleOnButton(e)}>All Pokemons</button>
+                <button className='homeBtn' onClick={(e)=> handleOnButton(e)}>All Pokemons</button>
                 <div className='pokeCards'>
                     {currentPokemons && currentPokemons.map(poke => {
                         return <div key={poke.id}>
@@ -60,7 +57,7 @@ export default function Home() {
                 </div>})}
                 </div>
                 <Paginate pokemonsPerPage={pokemonsPerPage} allPokemons={pokemons.length} paginate={paginate}/>
-                <button onClick={(e)=> handleOnButton(e)}>All Pokemons</button>
+                <button className='homeBtn' onClick={(e)=> handleOnButton(e)}>All Pokemons</button>
                 </div>}
     </div>
 }

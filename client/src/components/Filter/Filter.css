@@ -1,0 +1,18 @@
+.filter button{
+    border-color: black;
+    border: solid 4px;
+    border-radius: 100px;
+    background-color: white;
+    transition: background-color 0.25s, color 0.25s;
+    padding: 4px;
+    cursor: pointer;
+    color: orangered
+}
+
+.filter button:hover{
+    background-color: orangered;
+    color: white;
+    border: white;
+     border: solid 4px;
+    border-radius: 100px;
+}

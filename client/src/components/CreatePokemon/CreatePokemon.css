@@ -1,0 +1,88 @@
+.error{
+    color: red;
+}
+
+.createTitle{
+    margin: auto;
+    width: 25%;
+    background-color: white;
+    height: fit-content;
+    border: 5px solid;
+    border-radius: 10px;
+}
+
+.createBack{
+    background: linear-gradient(rgba(5, 7, 12, 0.75),rgba(5, 7, 12, 0.75)),
+    url("../../assets/CreatePokeBack.webp");
+    height: 100vh;
+}
+
+.form{
+    margin:0 auto;
+    background-color: white;
+    width: fit-content;
+    border:solid 7px;
+    border-radius: 20px;
+}
+
+.form label{
+    margin-left: 5px;
+}
+
+.deleteBtn{
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    display: flex;
+    flex-flow: row wrap;
+    margin:0 auto;
+}
+
+.deleteBtn div{
+    padding: 10px;
+}
+
+.backHomeBtn{
+    margin-top: 10px;
+    margin-right: 90%;
+    margin-bottom: 0px;
+    border-color: black;
+    border: solid 4px;
+    border-radius: 100px;
+    background-color: white;
+    transition: background-color 0.25s, color 0.25s;
+    padding: 7px;
+    cursor: pointer;
+    color: orangered
+}
+
+.backHomeBtn:hover{
+    background-color: orangered;
+    color: white;
+    border: white;
+    border: solid 4px;
+    border-radius: 100px;
+}
+
+.createBtn{
+    border-color: black;
+    border: solid 4px;
+    border-radius: 100px;
+    background-color: orangered;
+    transition: background-color 0.25s, color 0.25s;
+    padding: 7px;
+    cursor: pointer;
+    color: black
+}
+
+.createBtn:hover{
+    background-color: orangered;
+    color: white;
+    border: white;
+    border: solid 4px;
+    border-radius: 100px;
+}
+
+.createBtn:disabled:hover{
+    cursor: no-drop;
+}

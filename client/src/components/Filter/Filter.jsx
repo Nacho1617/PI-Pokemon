@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterByType, orderByAttack, orderByName, swapOrder } from '../../store/actions/index';
+import { filterByOrigin, filterByType, orderByAttack, orderByName, swapOrder } from '../../store/actions/index';
+import "./Filter.css"
 
 export default function Filter({setCurrentPage}) {
 
@@ -34,11 +35,29 @@ export default function Filter({setCurrentPage}) {
         setCurrentPage(1)
     }
 
+    function handleChangeDbOrApi(e) {
+        e.preventDefault()
+        if (e.target.value === "Db") {
+            dispatch(filterByOrigin(e.target.value))
+        }
+        if (e.target.value === "Api") {
+            dispatch(filterByOrigin(e.target.value))
+        }
+        setCurrentPage(1)
+    }
+
 
     return (
-            <div>
+            <div className="filter">
                 <button type='button' onClick={handleClickSwap}>
                    Swap Order ⇅
+                </button>
+                <br />
+                <button type='button' value="Db" onClick={handleChangeDbOrApi}>
+                   Only Db Pokemons
+                </button>
+                <button type='button' value="Api" onClick={handleChangeDbOrApi}>
+                   Only Api Pokemons
                 </button>
                 <br />
                 <label htmlFor='types'>Types</label>

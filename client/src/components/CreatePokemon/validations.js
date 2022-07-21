@@ -58,7 +58,16 @@ export default function validate(value, repeat) {
 
     if(/^(ftp|http|https):\/\/[^ "]+$/.test(value.image)){
         errors.image = '';
-    }else errors.image = 'Must have a valid link image.'
+    }
+    else errors.image = 'Must have a valid link image.'
+
+    if (value.types.length > 0) {
+        if (value.types.length > 3) {
+            errors.types = "You only can choose three types"
+        }
+        else errors.types = ""
+    }
+    else errors.types = "You have to choose at least one type"
 
 
     return errors;

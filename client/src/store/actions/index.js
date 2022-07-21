@@ -2,6 +2,7 @@ import {
     CLEAN_POKEMON_CREATED,
     CLEAN_POKEMON_DETAILS,
     CREATE_POKEMON,
+    FILTER_BY_ORIGIN,
     FILTER_BY_TYPE,
     GET_ALL_POKEMONS, GET_ALL_TYPES, GET_POKEMON_DETAILS, IS_LOADING, ORDER_BY_ATTACK, ORDER_BY_NAME, SEARCH_POKEMON, SHOW_ALL_POKEMON, SWAP_ORDER,
 } from "../reducer/cases"
@@ -106,6 +107,17 @@ export function filterByType(type) {
         })
         dispatch(isLoading(false))
     }
+}
+
+export function filterByOrigin(origin) {
+    return function(dispatch) {
+        dispatch(isLoading(true))
+        dispatch({
+            type: FILTER_BY_ORIGIN,
+            payload: origin
+        })
+        dispatch(isLoading(false))
+    }   
 }
 
 export function getAllTypes() {

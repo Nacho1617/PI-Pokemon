@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getPokemonDetails, cleanPokemonDetails} from '../../store/actions';
+import { NavLink } from 'react-router-dom';
 import "./CardPokeDetails.css"
+
 
 
 export default function CardPokemonDetails() {
@@ -29,7 +31,8 @@ export default function CardPokemonDetails() {
 
     return (
             <div className='pokeDetailsBack'>
-                <h1>{pokemon.name}</h1>
+                <NavLink to="/home"><button className='pokeDetailsButton'>Back to Home</button></NavLink>
+                <h1 className='pokeDetailsName'>{pokemon.name && pokemon.name[0].toUpperCase()+pokemon.name.substring(1)}</h1>
                 <div className='pokeDetailsContain'>
                 <img className='pokeDetailsImage' src={pokemon.image} alt={`imagen de pokemon`}/>
                 <div className='pokeDetailsStats'>

@@ -2,6 +2,7 @@ import {
     CLEAN_POKEMON_CREATED,
     CLEAN_POKEMON_DETAILS,
     CREATE_POKEMON,
+    FILTER_BY_ORIGIN,
     FILTER_BY_TYPE,
     GET_ALL_POKEMONS, GET_ALL_TYPES, GET_POKEMON_DETAILS, IS_LOADING, ORDER_BY_ATTACK, ORDER_BY_NAME, SEARCH_POKEMON, SHOW_ALL_POKEMON, SWAP_ORDER
 } from "./cases"
@@ -117,6 +118,21 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 pokemons: filterPokemon
+            }
+        case FILTER_BY_ORIGIN:
+            let filterOrigin = []
+            if (action.payload === "Db") {
+                filterOrigin = state.allPokemons.filter(p => p.id.length === 36)
+                if (filterOrigin.length === 0) {
+                    filterOrigin = "No pokemons were found in the database"
+                }
+            }
+            if (action.payload === "Api") {
+                filterOrigin = state.allPokemons.filter(p => p.id.length !== 36)
+            }
+            return {
+                ...state,
+                pokemons: filterOrigin
             }
         default:
             return {...state}
